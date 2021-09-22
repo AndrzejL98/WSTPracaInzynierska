@@ -1,1 +1,1 @@
-# WSTPracaIn-ynierska
+# WSTPracaInzynierska
