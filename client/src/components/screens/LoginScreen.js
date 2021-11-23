@@ -44,10 +44,10 @@ const LoginScreen = ({ history }) => {
   return (
     <div className="login-screen">
       <form onSubmit={loginHandler} className="login-screen__form">
-        <h3 className="login-screen__title">Login</h3>
-        {error && <span className="error-message">{error}</span>}
+        <h3 className="login-screen__title"> Login </h3>{" "}
+        {error && <span className="error-message"> {error} </span>}{" "}
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email"> Email: </label>{" "}
           <input
             type="email"
             required
@@ -56,13 +56,13 @@ const LoginScreen = ({ history }) => {
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             tabIndex={1}
-          />
-        </div>
+          />{" "}
+        </div>{" "}
         <div className="form-group">
           <label htmlFor="password">
-            Password:{" "}
+            Password:
             <Link to="/forgotpassword" className="login-screen__forgotpassword">
-              Forgot Password?
+              Forgot Password ?
             </Link>
           </label>
           <input
@@ -74,16 +74,15 @@ const LoginScreen = ({ history }) => {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             tabIndex={2}
-          />
-        </div>
+          />{" "}
+        </div>{" "}
         <button type="submit" className="btn btn-primary">
-          Login
-        </button>
-
+          Login{" "}
+        </button>{" "}
         <span className="login-screen__subtext">
-          Don't have an account? <Link to="/register">Register</Link>
-        </span>
-      </form>
+          Don 't have an account? <Link to="/register">Register</Link>{" "}
+        </span>{" "}
+      </form>{" "}
     </div>
   );
 };
