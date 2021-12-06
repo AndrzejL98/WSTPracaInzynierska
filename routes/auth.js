@@ -1,19 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const { signupValidator, validatorResult } = require("../middleware/validator");
 
-const {
-    register,
-    login,
-    forgotpassword,
-    resetpassword,
-} = require("../controllers/auth");
-
-router.route("/register").post(register);
-
-router.route("/login").post(login);
-
-router.route("/forgotpassword").post(forgotpassword);
-
-router.route("/passwordreset/:resetToken").put(resetpassword);
+router.post("/signup", signupValidator, validatorResult);
 
 module.exports = router;

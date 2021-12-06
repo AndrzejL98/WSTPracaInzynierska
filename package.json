@@ -1,33 +1,26 @@
 {
-    "name": "praca_inzynierska",
+    "name": "legobarber_bokkingapp",
     "version": "1.0.0",
-    "description": "",
+    "description": "Booking app ",
     "main": "server.js",
     "scripts": {
-        "server": "nodemon server.js",
-        "start": "node server.js"
+        "start": "node server.js",
+        "start-server": "nodemon server.js",
+        "start-client": "npm start --prefix client",
+        "dev": "concurrently \"npm run start-server\" \"npm run start-client\""
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/AndrzejL98/WSTPracaInzynierska.git"
-    },
-    "keywords": [],
-    "author": "",
+    "author": "Andrzej Legowik",
     "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/AndrzejL98/WSTPracaInzynierska/issues"
-    },
-    "homepage": "https://github.com/AndrzejL98/WSTPracaInzynierska#readme",
     "dependencies": {
-        "bcrypt": "^5.0.1",
-        "bcryptjs": "^2.4.3",
-        "dotenv": "^10.0.0",
+        "cors": "^2.8.5",
         "express": "^4.17.1",
-        "jsonwebtoken": "^8.5.1",
-        "mongoose": "^6.0.12",
-        "nodemailer": "^6.7.1"
+        "express-validator": "^6.13.0",
+        "mongoose": "^6.0.14",
+        "nodemon": "^2.0.15"
     },
     "devDependencies": {
-        "nodemon": "^2.0.15"
+        "concurrently": "^6.4.0",
+        "minimist": "^1.2.5",
+        "morgan": "^1.10.0"
     }
 }
