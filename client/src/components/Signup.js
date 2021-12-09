@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import isEmpty from "validator/lib/isEmpty";
 import isEmail from "validator/lib/isEmail";
 import equals from "validator/lib/equals";
 import { showErrorMessage, showSuccessMessage } from "../helpers/messages";
 import { showLoading } from "../helpers/loading";
-import { Link } from "react-router-dom";
-import "./Signup.css";
+import { isAuthenticated } from "../helpers/auth";
+import { Link, useHistory } from "react-router-dom";
 import { signup } from "../api/auth";
 
 const SignUp = () => {
+  let history = useHistory();
+  useEffect(() => {
+    if (isAuthenticated() && isAuthenticated().role === 1) {
+      console.log("Redirect to Admin dashboard");
+      history.push("/admin/dashboard");
+    } else if (isAuthenticated() && isAuthenticated().role === 0) {
+      console.log("Redirecting to user dashboard");
+      history.push("/user/dashboard");
+    }
+  }, [history]);
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -170,7 +181,7 @@ const SignUp = () => {
   //render
   return (
     <div className="signup-container">
-      <div className="row px-2 vh-100">
+      <div className="row px-3 vh-100">
         <div className="col-md-5 mx-auto align-self-center">
           {successMsg && showSuccessMessage(successMsg)}
           {errorMsg && showErrorMessage(errorMsg)}
