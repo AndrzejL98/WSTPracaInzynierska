@@ -42,6 +42,24 @@ const Header = ({ history }) => {
                   </li>
                   <li className="nav-item">
                     <Link
+                      to="/bookingwithoutaccount"
+                      className="nav-link active"
+                      aria-current="page"
+                    >
+                      <i className="far fa-calendar-check"></i> Book your visit
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      to="/about"
+                      className="nav-link active"
+                      aria-current="page"
+                    >
+                      <i className="fas fa-address-card"></i> About
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
                       to="/signup"
                       className="nav-link active"
                       aria-current="page"
@@ -87,6 +105,15 @@ const Header = ({ history }) => {
 
               {isAuthenticated() && (
                 <Fragment>
+                  <li className="nav-item">
+                    <Link
+                      to="/bookingwithaccount"
+                      className="nav-link active"
+                      aria-current="page"
+                    >
+                      <i className="far fa-calendar-check"></i> Book your visit
+                    </Link>
+                  </li>
                   <li className="nav-item">
                     <button
                       className="btn btn-link text-secondary text-decoration-none pl-0"

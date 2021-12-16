@@ -8,7 +8,7 @@ const AdminDashboard = () => {
         <div className="row">
           <div className="col-md-6">
             <h1>
-              <i className="fas fa-home"> Dashboard</i>
+              <i className="fas fa-home"> Admin Dashboard</i>
             </h1>
           </div>
         </div>
@@ -20,19 +20,24 @@ const AdminDashboard = () => {
     <div className="bg-light my-2">
       <div className="container">
         <div className="row pb-3">
-          <div className="col-md-4  mb-1">
+          <div className="col-md-3  mb-1">
             <button className="btn btn-outline-info btn-block">
               <i className="fas fa-plus"> Add Service</i>
             </button>
           </div>
-          <div className="col-md-4  mb-1">
+          <div className="col-md-3  mb-1">
             <button className="btn btn-outline-warning btn-block">
               <i className="fas fa-plus"> Add Worker role</i>
             </button>
           </div>
-          <div className="col-md-4  mb-1">
+          <div className="col-md-3  mb-1">
             <button className="btn btn-outline-success btn-block">
               <i className="fas fa-money-check-alt"> View Orders</i>
+            </button>
+          </div>
+          <div className="col-md-3  mb-1">
+            <button className="btn btn-outline-info btn-block">
+              <i className="fas fa-user-alt"> View Users</i>
             </button>
           </div>
         </div>
