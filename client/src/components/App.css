@@ -13,3 +13,27 @@
     background-position: center;
     opacity: 0.8;
 }
+
+.home-container {
+    background-image: url("../components/img/home.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.7;
+}
+
+.about-container {
+    background-image: url("../components/img/about.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.6;
+}
+
+.booking-container {
+    background-image: url("../components/img/Booking.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.6;
+}
