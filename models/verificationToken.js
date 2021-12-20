@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const verificationTokenSchema = new mongoose.Schema({
   owner: {
@@ -17,6 +18,22 @@ const verificationTokenSchema = new mongoose.Schema({
   },
 });
 
-const Verification = mongoose.model("User", UserSchema);
+verificationTokenSchema.pre("save", async function (next) {
+  if (this.isModified("token")) {
+    const hash = await bcrypt.hash(this.token, 8);
+    this.token = hash;
+  }
+  next();
+});
 
-module.exports = User;
+verificationTokenSchema.methods.compareToken = async function (token) {
+  const result = await bcrypt.compareSync(token, this.token);
+  return result;
+};
+
+const Verification = mongoose.model(
+  "VerificationToken",
+  verificationTokenSchema
+);
+
+module.exports = Verification;
