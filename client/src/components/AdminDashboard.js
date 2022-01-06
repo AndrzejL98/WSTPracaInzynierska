@@ -50,6 +50,9 @@ const AdminDashboard = () => {
     <section>
       {showHeader()}
       {showActionBtns()}
+      <div class="footer-copyright text-center py-3 mt-auto">
+        © 2022 Created by: Andrzej Łęgowik
+      </div>
     </section>
   );
 };

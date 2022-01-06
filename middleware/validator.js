@@ -22,8 +22,6 @@ exports.validatorResult = (req, res, next) => {
     return res.status(400).json({
       errorMessage: firstError,
     });
-    // console.log("hasError: ", hasErrors);
-    // console.log("result: ", result);
   }
   next();
 };

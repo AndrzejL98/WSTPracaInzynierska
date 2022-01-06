@@ -14,6 +14,14 @@
     opacity: 0.8;
 }
 
+.Otp-container {
+    background-image: url("../components/img/Otpbcg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.9;
+}
+
 .home-container {
     background-image: url("../components/img/home.jpg");
     background-size: cover;
@@ -35,5 +43,5 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.6;
+    opacity: 0.8;
 }

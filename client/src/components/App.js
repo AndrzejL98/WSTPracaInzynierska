@@ -11,6 +11,7 @@ import AdminDashboard from "./AdminDashboard";
 import About from "./About";
 import BookingWithAccount from "./BookingWithAccount";
 import BookingWithoutAccount from "./BookingWithoutAccount";
+import OtpForm from "./OtpForm";
 import NotFound from "./NotFound";
 
 const App = () => (
@@ -22,6 +23,8 @@ const App = () => (
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/about" component={About} />
+        <Route exact path="/reset-password" component={OtpForm} />
+
         <Route
           exact
           path="/bookingwithaccount"

@@ -1,7 +1,14 @@
 import React from "react";
 
 const NotFound = () => {
-  return <div>Not Found</div>;
+  return (
+    <div>
+      <div>Not Found</div>
+      <div class="footer-copyright text-center py-3 mt-auto">
+        © 2022 Created by: Andrzej Łęgowik
+      </div>
+    </div>
+  );
 };
 
 export default NotFound;

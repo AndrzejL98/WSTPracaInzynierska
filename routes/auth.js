@@ -8,13 +8,14 @@ const {
 const {
   signupController,
   signinController,
-  verifyEmail,
+  emailSend,
+  changePassword,
 } = require("../controllers/auth");
 
 router.post("/signup", signupValidator, validatorResult, signupController);
+
+router.post("/email-send", emailSend);
 router.post("/signin", signinValidator, validatorResult, signinController);
-router.post("/verify-email", function (req, res) {
-  verifyEmail;
-});
+router.post("/change-password", changePassword);
 
 module.exports = router;

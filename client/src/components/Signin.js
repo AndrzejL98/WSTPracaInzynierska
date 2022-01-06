@@ -37,6 +37,10 @@ const Signin = () => {
     });
   };
 
+  const changePassword = async () => {
+    history.push("/reset-password");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -118,7 +122,13 @@ const Signin = () => {
           </button>
         </div>
         <p className="text-center text-white">
-          Dom't have an account? <Link to="/signup">Register here</Link>
+          Don't have an account? <Link to="/signup">Register here</Link>
+        </p>
+        <p className="text-center text-white">
+          Forget Password?{" "}
+          <Link to="/reset-password" onClick={changePassword}>
+            Click here
+          </Link>
         </p>
       </form>
     );
@@ -126,15 +136,20 @@ const Signin = () => {
 
   //render
   return (
-    <div className="signin-container">
-      <div className="row px-3 vh-100">
-        <div className="col-md-5 mx-auto align-self-center">
-          {errorMsg && showErrorMessage(errorMsg)}
-          {loading && (
-            <div className="text-center pb-4">{showLoading(loading)}</div>
-          )}
-          {showSignInForm()}
+    <div>
+      <div className="signin-container">
+        <div className="row px-3 vh-100">
+          <div className="col-md-5 mx-auto align-self-center">
+            {errorMsg && showErrorMessage(errorMsg)}
+            {loading && (
+              <div className="text-center pb-4">{showLoading(loading)}</div>
+            )}
+            {showSignInForm()}
+          </div>
         </div>
+      </div>
+      <div class="footer-copyright text-center py-3 mt-auto">
+        © 2022 Created by: Andrzej Łęgowik
       </div>
     </div>
   );
