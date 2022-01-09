@@ -9,8 +9,7 @@ import UserRoute from "./UserRoute";
 import UserDashboard from "./UserDashboard";
 import AdminDashboard from "./AdminDashboard";
 import About from "./About";
-import BookingWithAccount from "./BookingWithAccount";
-import BookingWithoutAccount from "./BookingWithoutAccount";
+import BookingVisit from "./BookingVisit";
 import OtpForm from "./OtpForm";
 import NotFound from "./NotFound";
 
@@ -25,16 +24,7 @@ const App = () => (
         <Route exact path="/about" component={About} />
         <Route exact path="/reset-password" component={OtpForm} />
 
-        <Route
-          exact
-          path="/bookingwithaccount"
-          component={BookingWithAccount}
-        />
-        <Route
-          exact
-          path="/bookingwithoutaccount"
-          component={BookingWithoutAccount}
-        />
+        <Route exact path="/bookingvisit" component={BookingVisit} />
         <UserRoute exact path="/user/dashboard" component={UserDashboard} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <Route component={NotFound} />

@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Otp = require("../models/Otp");
+const Booking = require("../models/Booking");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
@@ -113,7 +114,9 @@ exports.changePassword = async (req, res) => {
       response.statusText = "error";
     } else {
       let user = await User.findOne({ email: req.body.email });
+      var salt = bcrypt.genSaltSync(10);
       user.password = req.body.password;
+      user.password = await bcrypt.hash(user.password, salt);
       user.save();
       response.message = "Password Changes Successfuly";
       response.statusText = "Success";
@@ -150,4 +153,26 @@ const mailer = (email, otp) => {
       console.log("Email sent: " + info.response);
     }
   });
+};
+
+exports.sendBookingController = async (req, res) => {
+  const { name, surname, email, datevisit } = req.body;
+
+  const newVisit = new Booking();
+  newVisit.name = name;
+  newVisit.surname = surname;
+  newVisit.email = email;
+  newVisit.datevisit = datevisit;
+
+  try {
+    await newVisit.save().then((res) => {});
+    res.json({
+      successmessage: "Visit booked successfully.Please check your email",
+    });
+  } catch (err) {
+    console.log("Booking Visit error", err);
+    res.status(500).json({
+      errorMessage: "Booking Visit error",
+    });
+  }
 };

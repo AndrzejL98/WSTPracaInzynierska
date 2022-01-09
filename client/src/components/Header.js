@@ -42,7 +42,7 @@ const Header = ({ history }) => {
                   </li>
                   <li className="nav-item">
                     <Link
-                      to="/bookingwithoutaccount"
+                      to="/bookingvisit"
                       className="nav-link active"
                       aria-current="page"
                     >

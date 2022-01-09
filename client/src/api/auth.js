@@ -22,3 +22,14 @@ export const signin = async (data) => {
 
   return response;
 };
+export const sendbookingform = async (data) => {
+  const config = {
+    header: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const response = await axios.post("/api/auth/bookingvisit", data, config);
+
+  return response;
+};

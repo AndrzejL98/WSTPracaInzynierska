@@ -14,6 +14,13 @@ exports.signinValidator = [
     .withMessage("Password must be at least 6 characters long"),
 ];
 
+exports.bookingvisit = [
+  check("name").not().isEmpty().trim().withMessage("All fields required"),
+  check("surname").not().isEmpty().trim().withMessage("All fields required"),
+  check("datevisit").not().isEmpty().trim().withMessage("All fields required"),
+  check("email").isEmail().normalizeEmail().withMessage("Invalid email"),
+];
+
 exports.validatorResult = (req, res, next) => {
   const result = validationResult(req);
   const hasErrors = !result.isEmpty();

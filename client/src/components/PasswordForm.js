@@ -70,7 +70,7 @@ function PasswordForm(props) {
       try {
         let response = await axios(options);
         console.log(response);
-        if (response.data.statusText == "Success") {
+        if (response.data.statusText === "Success") {
           toast.success(response.data.message);
           //history.push("/signin");
         } else {
