@@ -13,9 +13,20 @@ const BookingVisit = () => {
     surname: "",
     email: "",
     datevisit: "",
+    worker: "",
+    service: "",
   });
-  const { name, surname, email, datevisit, successMsg, errorMsg, loading } =
-    formData;
+  const {
+    name,
+    surname,
+    email,
+    datevisit,
+    worker,
+    service,
+    successMsg,
+    errorMsg,
+    loading,
+  } = formData;
 
   //event handlers
   // const [selectedDate, setSelectedDate] = useState(null);
@@ -39,7 +50,9 @@ const BookingVisit = () => {
       isEmpty(name) ||
       isEmpty(surname) ||
       isEmpty(email) ||
-      isEmpty(datevisit)
+      isEmpty(datevisit) ||
+      isEmpty(worker) ||
+      isEmpty(service)
     ) {
       setFormData({
         ...formData,
@@ -51,18 +64,21 @@ const BookingVisit = () => {
         errorMsg: "Invalid email",
       });
     } else {
-      const { name, surname, email, datevisit } = formData;
+      const { name, surname, email, datevisit, worker, service } = formData;
 
       const data = {
         name,
         surname,
         email,
         datevisit,
+        worker,
+        service,
       };
 
       setFormData({ ...formData, loading: true });
-
-      console.log(datevisit);
+      console.log(data);
+      console.log(worker.value);
+      console.log(service.value);
 
       sendbookingform(data)
         .then((response) => {
@@ -72,7 +88,9 @@ const BookingVisit = () => {
             surname: "",
             email: "",
             datevisit: "",
-            successMsg: response.data.successMessage,
+            worker: "",
+            serivce: "",
+            successMsg: response.data.successmessage,
           });
         })
         .catch((err) => {
@@ -153,12 +171,6 @@ const BookingVisit = () => {
               type="datetime-local"
               onChange={handleChange}
             />
-            {/* <input
-              type="datetime-local"
-              value={datevisit}
-              onChange={handleDataChange}
-              format="yyyy-MM-dd"
-            /> */}
           </div>
         </div>
         <div className="form-group input-group">
@@ -168,12 +180,50 @@ const BookingVisit = () => {
             </span>
           </div>
           <div>
-            {/* <select className="form-control"
-            onChange={handleChange}>
-
-
+            <select
+              className="form-control"
+              name="worker"
+              value={worker}
+              aria-label="Default select example"
+              onChange={handleChange}
+            >
+              <option value="Tom">Maciek</option>
+              <option value="Lukas">Lukas</option>
+              <option value="Chris">Wojtek</option>
+              <option value="Pablo">Pablo</option>
             </select>
-            */}
+          </div>
+        </div>
+        <div className="form-group input-group">
+          <div className="input-group-prepend">
+            <span className="input-group-text">
+              <i class="fa-solid fa-calendar"></i>
+            </span>
+          </div>
+          <div>
+            <select
+              name="service"
+              value={service}
+              className="form-control"
+              onChange={handleChange}
+            >
+              <option value="Strzyżenie włosów 45PLN">
+                Strzyżenie włosów 45PLN
+              </option>
+              <option value="Golenie włosów 20PLN">Golenie włosów 20PLN</option>
+              <option value="Farbowanie włosów 60PLN">
+                Farbowanie włosów 60PLN
+              </option>
+              <option value="Trymowanie brody 40PLN">
+                Trymowanie brody 40PLN
+              </option>
+              <option value="Pielęgnacja brody 25PLN">
+                Pielęgnacja brody 25PLN
+              </option>
+              <option value="Combo: Strzyżenie włosów + Trymowanie bordy 70PLN">
+                Combo: Strzyżenie włosów + Trymowanie bordy 70PLN
+              </option>
+            </select>
           </div>
         </div>
         <div className="form-group">
@@ -190,7 +240,7 @@ const BookingVisit = () => {
     <div>
       <div className="about-container">
         <div className="row px-3 vh-100">
-          <div className="col-md-5 mx-auto align-self-center">
+          <div className="col-md-6 mx-auto align-self-center">
             {successMsg && showSuccessMessage(successMsg)}
             {errorMsg && showErrorMessage(errorMsg)}
             {loading && (

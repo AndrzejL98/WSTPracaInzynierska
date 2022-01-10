@@ -18,6 +18,14 @@ const BookingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    worker: {
+      type: String,
+      required: true,
+    },
+    service: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

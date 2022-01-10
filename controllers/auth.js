@@ -156,13 +156,15 @@ const mailer = (email, otp) => {
 };
 
 exports.sendBookingController = async (req, res) => {
-  const { name, surname, email, datevisit } = req.body;
+  const { name, surname, email, datevisit, worker, service } = req.body;
 
   const newVisit = new Booking();
   newVisit.name = name;
   newVisit.surname = surname;
   newVisit.email = email;
   newVisit.datevisit = datevisit;
+  newVisit.worker = worker;
+  newVisit.service = service;
 
   try {
     await newVisit.save().then((res) => {});
