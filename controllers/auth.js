@@ -26,9 +26,11 @@ exports.signupController = async (req, res) => {
     newUser.password = await bcrypt.hash(password, salt);
 
     await newUser.save().then((result) => {});
+
     res.json({
       successMessage: "Registration success. Please signin",
     });
+    welcomemailer(req.body.email);
   } catch (err) {
     console.log("signupController error", err);
     res.status(500).json({
@@ -102,6 +104,33 @@ exports.emailSend = async (req, res) => {
   }
   res.status(200).json(responseType);
 };
+exports.bookingemailSend = async (req, res) => {
+  let data = await Booking.findOne({
+    name: req.body.name,
+    surname: req.body.surname,
+    email: req.body.email,
+    datevisit: req.body.datevisit,
+    worker: req.body.worker,
+    service: req.body.service,
+  });
+  const responseType = {};
+  if (data) {
+    responseType.statusText = "Success";
+    bookingmailer(
+      req.body.name,
+      req.body.surname,
+      req.body.email,
+      req.body.datevisit,
+      req.body.worker,
+      req.body.service
+    );
+    responseType.message = "Please Check Your Email Id";
+  } else {
+    responseType.statusText = "Error";
+    responseType.message = "Email Id not Exists";
+  }
+  res.status(200).json(responseType);
+};
 
 exports.changePassword = async (req, res) => {
   let data = await Otp.find({ email: req.body.email, code: req.body.otpCode });
@@ -154,6 +183,66 @@ const mailer = (email, otp) => {
     }
   });
 };
+const bookingmailer = (name, surname, email, datevisit, worker, service) => {
+  var transporter = nodemailer.createTransport({
+    service: "gmail",
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.AUTH_EMAIL,
+      pass: process.env.AUTH_PASS,
+    },
+  });
+
+  var mailerOptions = {
+    from: process.env.AUTH_EMAIL,
+    to: email,
+    subject: "Thank you for your order",
+    text: `Your visit has been confirmed.
+    Your data:
+    name: ${name},
+    surname: ${surname},
+    email: ${email},
+    date:${datevisit}
+    worker:${worker},
+    service:${service}
+    `,
+  };
+
+  transporter.sendMail(mailerOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+};
+const welcomemailer = (email) => {
+  var transporter = nodemailer.createTransport({
+    service: "gmail",
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.AUTH_EMAIL,
+      pass: process.env.AUTH_PASS,
+    },
+  });
+
+  var mailerOptions = {
+    from: process.env.AUTH_EMAIL,
+    to: email,
+    subject: "Welcome",
+    text: `Welcome to LegoBarber.pl`,
+  };
+
+  transporter.sendMail(mailerOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+};
 
 exports.sendBookingController = async (req, res) => {
   const { name, surname, email, datevisit, worker, service } = req.body;
@@ -168,9 +257,19 @@ exports.sendBookingController = async (req, res) => {
 
   try {
     await newVisit.save().then((res) => {});
+
     res.json({
       successmessage: "Visit booked successfully.Please check your email",
     });
+
+    bookingmailer(
+      req.body.name,
+      req.body.surname,
+      req.body.email,
+      req.body.datevisit,
+      req.body.worker,
+      req.body.service
+    );
   } catch (err) {
     console.log("Booking Visit error", err);
     res.status(500).json({

@@ -89,7 +89,7 @@ const BookingVisit = () => {
             email: "",
             datevisit: "",
             worker: "",
-            serivce: "",
+            service: "",
             successMsg: response.data.successmessage,
           });
         })
@@ -166,6 +166,7 @@ const BookingVisit = () => {
             <input
               name="datevisit"
               value={datevisit}
+              default={Date.now()}
               className="form-control"
               placeholder="date"
               type="datetime-local"
@@ -183,13 +184,15 @@ const BookingVisit = () => {
             <select
               className="form-control"
               name="worker"
+              default={null}
               value={worker}
               aria-label="Default select example"
               onChange={handleChange}
             >
-              <option value="Tom">Maciek</option>
+              <option value={null}></option>
+              <option value="Tom">Tom</option>
               <option value="Lukas">Lukas</option>
-              <option value="Chris">Wojtek</option>
+              <option value="Chris">Chris</option>
               <option value="Pablo">Pablo</option>
             </select>
           </div>
@@ -202,11 +205,14 @@ const BookingVisit = () => {
           </div>
           <div>
             <select
-              name="service"
-              value={service}
               className="form-control"
+              name="service"
+              default={null}
+              value={service}
+              aria-label="Default select example"
               onChange={handleChange}
             >
+              <option value={null}></option>
               <option value="Strzyżenie włosów 45PLN">
                 Strzyżenie włosów 45PLN
               </option>
