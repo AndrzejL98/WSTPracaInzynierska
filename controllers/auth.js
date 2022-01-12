@@ -183,6 +183,23 @@ const mailer = (email, otp) => {
     }
   });
 };
+
+exports.displayuser = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.send(err).json("error przy wczytywaniu listy userów");
+  }
+};
+exports.displaybooking = async (req, res) => {
+  try {
+    const bookings = await Booking.find();
+    res.json(bookings);
+  } catch (err) {
+    res.send(err).json("error przy wczytywaniu listy bookingu");
+  }
+};
 const bookingmailer = (name, surname, email, datevisit, worker, service) => {
   var transporter = nodemailer.createTransport({
     service: "gmail",

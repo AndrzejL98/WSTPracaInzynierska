@@ -107,7 +107,7 @@ const Header = ({ history }) => {
                 <Fragment>
                   <li className="nav-item">
                     <Link
-                      to="/bookingwithaccount"
+                      to="/bookingvisit"
                       className="nav-link active"
                       aria-current="page"
                     >
