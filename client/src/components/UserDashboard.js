@@ -77,9 +77,15 @@ class UserDashboard extends React.Component {
     return users.map((user, index) => (
       <div key={index}>
         <ul>
-          <li>{user._id}</li>
-          <li>{user.username}</li>
-          <li>{user.email}</li>
+          <li className="list-group-item list-group-item-info">
+            ID: {user._id}
+          </li>
+          <li className="list-group-item list-group-item-info">
+            Username: {user.username}
+          </li>
+          <li className="list-group-item list-group-item-info">
+            Email: {user.email}
+          </li>
         </ul>
       </div>
     ));
@@ -92,12 +98,24 @@ class UserDashboard extends React.Component {
     return bookings.map((booking, numer) => (
       <div key={numer}>
         <ul>
-          <li>{booking.name}</li>
-          <li>{booking.surname}</li>
-          <li>{booking.email}</li>
-          <li>{booking.datevisit}</li>
-          <li>{booking.worker}</li>
-          <li>{booking.service}</li>
+          <li className="list-group-item list-group-item-success">
+            Name: {booking.name}
+          </li>
+          <li className="list-group-item list-group-item-success">
+            Surname: {booking.surname}
+          </li>
+          <li className="list-group-item list-group-item-success">
+            Email: {booking.email}
+          </li>
+          <li className="list-group-item list-group-item-success">
+            Date of Visit: {booking.datevisit}
+          </li>
+          <li className="list-group-item list-group-item-success">
+            Worker: {booking.worker}
+          </li>
+          <li className="list-group-item list-group-item-success">
+            Service: {booking.service}
+          </li>
         </ul>
       </div>
     ));
@@ -109,7 +127,9 @@ class UserDashboard extends React.Component {
       console.log(user);
       return (
         <div>
-          <p>Hi {user.username}</p>
+          <h2 className="list-group-item list-group-item-primary">
+            Hello {user.username}
+          </h2>
         </div>
       );
     };
@@ -168,41 +188,60 @@ class UserDashboard extends React.Component {
           {showActionBtns()}
           {displayName()}
         </section>
-        <div>
-          <ul onClick={this.onClick.bind(this, 0)}>
-            {this.state.showItems[0] ? (
-              <div>
-                <li>Strzyżenie włosów 45PLN</li>
-                <li>Golenie włosów 20PLN</li>
-                <li>Farbowanie włosów 60PLN</li>
-                <li> Trymowanie brody 40PLN</li>
-                <li> Pielęgnacja brody 25PLN</li>
-                <li> Combo: Strzyżenie włosów + Trymowanie bordy 70PLN</li>
-              </div>
-            ) : null}
-          </ul>
-        </div>
-        <div>
-          <div onClick={this.onClick.bind(this, 1)}>
-            {this.state.showItems[1] ? (
-              <div className="userpost">
-                {this.displayUsers(this.state.users)}
-              </div>
-            ) : null}
+        <div className="signin-container">
+          <div>
+            <ul onClick={this.onClick.bind(this, 0)}>
+              {this.state.showItems[0] ? (
+                <div>
+                  <ul className="list-group">
+                    <li className="list-group-item list-group-item-warning">
+                      Haircut 12$
+                    </li>
+                    <li className="list-group-item list-group-item-warning">
+                      Shaving hair 6$
+                    </li>
+                    <li className="list-group-item list-group-item-warning">
+                      Hair dyeing 16$
+                    </li>
+                    <li className="list-group-item list-group-item-warning">
+                      {" "}
+                      Trimming the beard 11$
+                    </li>
+                    <li className="list-group-item list-group-item-warning">
+                      {" "}
+                      Beard care 7$
+                    </li>
+                    <li className="list-group-item list-group-item-warning">
+                      {" "}
+                      Combo: Haircut + Trimming the beard 18$
+                    </li>
+                  </ul>
+                </div>
+              ) : null}
+            </ul>
           </div>
-        </div>
-        <div>
-          <div onClick={this.onClick.bind(this, 2)}>
-            {this.state.showItems[2] ? (
-              <div className="bookingpost">
-                {this.displayBookings(this.state.bookings)}
-              </div>
-            ) : null}
+          <div>
+            <div onClick={this.onClick.bind(this, 1)}>
+              {this.state.showItems[1] ? (
+                <div className="userpost">
+                  {this.displayUsers(this.state.users)}
+                </div>
+              ) : null}
+            </div>
           </div>
-        </div>
+          <div>
+            <div onClick={this.onClick.bind(this, 2)}>
+              {this.state.showItems[2] ? (
+                <div className="bookingpost">
+                  {this.displayBookings(this.state.bookings)}
+                </div>
+              ) : null}
+            </div>
+          </div>
 
-        <div className="container">
-          <div className="vh-100"></div>
+          <div className="container">
+            <div className="vh-100"></div>
+          </div>
         </div>
         <div className="footer-copyright text-center py-3 mt-auto">
           © 2022 Created by: Andrzej Łęgowik

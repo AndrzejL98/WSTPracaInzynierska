@@ -2,7 +2,7 @@ const About = () => {
   return (
     <div>
       <div className="about-container">
-        <div className="row px-3 vh-100">
+        <div className="row px-4 vh-100">
           <div className="col-md-5 mx-auto  align-self-center">
             <p
               style={{
@@ -10,7 +10,7 @@ const About = () => {
                 color: "black",
                 fontFamily: "Roboto",
                 shadow: { bottom: 5 },
-                border: "3px black solid",
+                border: "3px blue solid",
                 fontSize: 35,
                 backgroundColor: "white",
                 opacity: 0.8,

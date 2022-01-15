@@ -68,9 +68,15 @@ export class AdminDashboard extends Component {
     return users.map((user, index) => (
       <div key={index}>
         <ul>
-          <li>{user._id}</li>
-          <li>{user.username}</li>
-          <li>{user.email}</li>
+          <li className="list-group-item list-group-item-info">
+            ID: {user._id}
+          </li>
+          <li className="list-group-item list-group-item-info">
+            Username: {user.username}
+          </li>
+          <li className="list-group-item list-group-item-info">
+            Email: {user.email}
+          </li>
         </ul>
       </div>
     ));
@@ -83,12 +89,24 @@ export class AdminDashboard extends Component {
     return bookings.map((booking, numer) => (
       <div key={numer}>
         <ul>
-          <li>{booking.name}</li>
-          <li>{booking.surname}</li>
-          <li>{booking.email}</li>
-          <li>{booking.datevisit}</li>
-          <li>{booking.worker}</li>
-          <li>{booking.service}</li>
+          <li className="list-group-item list-group-item-success">
+            Name: {booking.name}
+          </li>
+          <li className="list-group-item list-group-item-success">
+            Surname: {booking.surname}
+          </li>
+          <li className="list-group-item list-group-item-success">
+            Email: {booking.email}
+          </li>
+          <li className="list-group-item list-group-item-success">
+            Date of Visit: {booking.datevisit}
+          </li>
+          <li className="list-group-item list-group-item-success">
+            Worker: {booking.worker}
+          </li>
+          <li className="list-group-item list-group-item-success">
+            Service: {booking.service}
+          </li>
         </ul>
       </div>
     ));
@@ -146,28 +164,31 @@ export class AdminDashboard extends Component {
           {showHeader()}
           {showActionBtns()}
         </section>
-        <section>
-          <div>
-            <div onClick={this.onClick.bind(this, 0)}>
-              {this.state.showItems[0] ? (
-                <div className="userpost">
-                  {this.displayUsers(this.state.users)}
-                </div>
-              ) : null}
+
+        <div className="signin-container">
+          <section>
+            <div>
+              <div onClick={this.onClick.bind(this, 0)}>
+                {this.state.showItems[0] ? (
+                  <div className="userpost">
+                    {this.displayUsers(this.state.users)}
+                  </div>
+                ) : null}
+              </div>
             </div>
-          </div>
-          <div>
-            <div onClick={this.onClick.bind(this, 1)}>
-              {this.state.showItems[1] ? (
-                <div className="bookingpost">
-                  {this.displayBookings(this.state.bookings)}
-                </div>
-              ) : null}
+            <div>
+              <div onClick={this.onClick.bind(this, 1)}>
+                {this.state.showItems[1] ? (
+                  <div className="bookingpost">
+                    {this.displayBookings(this.state.bookings)}
+                  </div>
+                ) : null}
+              </div>
             </div>
+          </section>
+          <div className="container">
+            <div className="vh-100"></div>
           </div>
-        </section>
-        <div className="container">
-          <div className="vh-100"></div>
         </div>
         <div className="footer-copyright text-center py-3 mt-auto">
           © 2022 Created by: Andrzej Łęgowik

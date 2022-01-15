@@ -12,7 +12,7 @@ const Home = () => {
                 color: "black",
                 fontFamily: "Roboto",
                 shadow: { bottom: 5 },
-                border: "3px black solid",
+                border: "3px blue solid",
                 fontSize: 30,
                 backgroundColor: "white",
                 opacity: 0.8,
