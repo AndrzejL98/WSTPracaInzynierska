@@ -237,7 +237,7 @@ const BookingVisit = () => {
               <option value="Pablo">Pablo</option>
               <option value="Denis">Denis</option>
               <option value="Carlos">Carlos</option>
-              <option value="Ricardo-Milos">Ricardo-Milos</option>
+              <option value="Ricardo-Milos">Ricardo</option>
               <option value="Dima">Dima</option>
             </select>
           </div>
