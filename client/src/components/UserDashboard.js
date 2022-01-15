@@ -33,7 +33,7 @@ class UserDashboard extends React.Component {
     const mail = JSON.parse(localStorage.getItem("user")).email;
     axios
       //.post("http://localhost:5000/api/auth/displayuser")
-      .post("http://localhost:5000/api/auth/displayuserpaneluser", { mail })
+      .post(`http:/${process.env.PORT}/api/auth/displayuserpaneluser`, { mail })
       .then((response) => {
         //const mail = JSON.parse(localStorage.getItem("user")).email;
         console.log(mail);
@@ -52,7 +52,9 @@ class UserDashboard extends React.Component {
   displayuserpanelorder = () => {
     const mail = JSON.parse(localStorage.getItem("user")).email;
     axios
-      .post("http://localhost:5000/api/auth/displayuserpanelorder", { mail })
+      .post(`http://${process.env.PORT}/api/auth/displayuserpanelorder`, {
+        mail,
+      })
       .then((response) => {
         const data = response.data;
         this.setState({

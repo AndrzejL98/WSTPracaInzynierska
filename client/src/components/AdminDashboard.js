@@ -30,7 +30,7 @@ export class AdminDashboard extends Component {
     const mail = "andrzejlegowik1@gmail.com";
     axios
       //.post("http://localhost:5000/api/auth/displayuser")
-      .get("http://localhost:5000/api/auth/displayuser")
+      .get(`http://${process.env.PORT}/api/auth/displayuser`)
       .then((response) => {
         //const mail = JSON.parse(localStorage.getItem("user")).email;
         console.log(mail);
@@ -49,7 +49,7 @@ export class AdminDashboard extends Component {
   getBookings = () => {
     //const mail = JSON.parse(localStorage.getItem("user")).email;
     axios
-      .get("http://localhost:5000/api/auth/displaybooking")
+      .get(`http://${process.env.PORT}/api/auth/displaybooking`)
       .then((response) => {
         const data = response.data;
         this.setState({
