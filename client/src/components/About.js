@@ -13,18 +13,18 @@ const About = () => {
                 border: "3px black solid",
                 fontSize: 35,
                 backgroundColor: "white",
+                opacity: 0.8,
               }}
             >
               My name is Andrzej. I am the founder of the LegoBarber website.
               Our hairdressing salon is located in the center of Katowice. We
               have qualified staff and a nice atmosphere. We have hundreds of
-              satisfied. If you want to test our services, please contact us by
-              phone or book an appointment via the Internet.
+              satisfied.
             </p>
           </div>
         </div>
       </div>
-      <div class="footer-copyright text-center py-3 mt-auto">
+      <div className="footer-copyright text-center py-3 mt-auto">
         © 2020 Created by: Andrzej Łęgowik
       </div>
     </div>

@@ -27,10 +27,15 @@ export class AdminDashboard extends Component {
   }
 
   getUsers = () => {
+    const mail = "andrzejlegowik1@gmail.com";
     axios
+      //.post("http://localhost:5000/api/auth/displayuser")
       .get("http://localhost:5000/api/auth/displayuser")
       .then((response) => {
+        //const mail = JSON.parse(localStorage.getItem("user")).email;
+        console.log(mail);
         const data = response.data;
+        //data.filter((user) => user.email === mail.email);
         this.setState({
           users: data,
         });
@@ -42,6 +47,7 @@ export class AdminDashboard extends Component {
   };
 
   getBookings = () => {
+    //const mail = JSON.parse(localStorage.getItem("user")).email;
     axios
       .get("http://localhost:5000/api/auth/displaybooking")
       .then((response) => {
@@ -71,6 +77,7 @@ export class AdminDashboard extends Component {
   };
 
   displayBookings = (bookings) => {
+    const mail = JSON.parse(localStorage.getItem("user"));
     if (!bookings.length) return null;
 
     return bookings.map((booking, numer) => (
@@ -139,30 +146,30 @@ export class AdminDashboard extends Component {
           {showHeader()}
           {showActionBtns()}
         </section>
-        <div>
-          <div onClick={this.onClick.bind(this, 0)}>
-            {this.state.showItems[0] ? (
-              <div className="userpost">
-                {this.displayUsers(this.state.users)}
-              </div>
-            ) : null}
+        <section>
+          <div>
+            <div onClick={this.onClick.bind(this, 0)}>
+              {this.state.showItems[0] ? (
+                <div className="userpost">
+                  {this.displayUsers(this.state.users)}
+                </div>
+              ) : null}
+            </div>
           </div>
-        </div>
-        <div>
-          {" "}
-          <div onClick={this.onClick.bind(this, 1)}>
-            {this.state.showItems[1] ? (
-              <div className="bookingpost">
-                {this.displayBookings(this.state.bookings)}
-              </div>
-            ) : null}
+          <div>
+            <div onClick={this.onClick.bind(this, 1)}>
+              {this.state.showItems[1] ? (
+                <div className="bookingpost">
+                  {this.displayBookings(this.state.bookings)}
+                </div>
+              ) : null}
+            </div>
           </div>
-        </div>
-
+        </section>
         <div className="container">
           <div className="vh-100"></div>
         </div>
-        <div class="footer-copyright text-center py-3 mt-auto">
+        <div className="footer-copyright text-center py-3 mt-auto">
           © 2022 Created by: Andrzej Łęgowik
         </div>
       </div>

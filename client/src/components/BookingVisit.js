@@ -3,8 +3,8 @@ import isEmpty from "validator/lib/isEmpty";
 import isEmail from "validator/lib/isEmail";
 import { showErrorMessage, showSuccessMessage } from "../helpers/messages";
 import { showLoading } from "../helpers/loading";
-//import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import Datetime from "react-datetime";
+import "react-datetime/css/react-datetime.css";
 import { sendbookingform } from "../api/auth";
 
 const BookingVisit = () => {
@@ -29,8 +29,8 @@ const BookingVisit = () => {
   } = formData;
 
   //event handlers
-  // const [selectedDate, setSelectedDate] = useState(null);
-  // const handleDataChange = (date) => setSelectedDate(date);
+  //  const [selectedDate, setSelectedDate] = useState(null);
+  //  const handleDataChange = (date) => setSelectedDate(date);
 
   const handleChange = (e) => {
     setFormData({
@@ -104,10 +104,45 @@ const BookingVisit = () => {
     }
   };
 
+  // let picker = document.getElementById("startDate");
+  // picker.addEventListener("input", function (e) {
+  //   var day = new Date(this.value).getUTCDay();
+  //   if ([6, 0].includes(day)) {
+  //     e.preventDefault();
+  //     this.value = "";
+  //     alert("Weekends are not allowed");
+  //   }
+  // });
+
   const ShowBookingForm = () => {
     // let handleColor = (time) => {
     //   return time.getHours() > 12 ? "text-success" : "text-error";
     // };
+
+    // const getName = (e) => {
+    //   return this.setState({ datevisit: e.target.getAttribute("name") });
+    // };
+
+    // const validate = (e) => {
+    //   const inputName = this.state.currentName;
+    // };
+    //const inputName = this.state.currentName
+    // const minHour = (value) => {
+    //   let curval = value.replace("T", " ").slice(11);
+    //   console.log(curval);
+    //   let hours = curval.slice(0, -3).toString();
+    //   if (parseInt(hours) < 8 || parseInt(hours) > 20) {
+    //     setFormData({
+    //       ...formData,
+    //       errorMsg: "Salon otwarty od 8:00 do 20:00",
+    //     });
+    //   }
+    // };
+
+    //console.log(dateInput);
+    // let minDate = new Date().toLocaleString();
+    // minDate = Date.now();
+    // console.log(minDate);
     return (
       <form className="signup-form" onSubmit={handleSubmit} noValidate>
         <div className="form-group input-group">
@@ -164,11 +199,17 @@ const BookingVisit = () => {
           </div>
           <div>
             <input
+              input={true}
+              name="datevisit"
+              //selected={selectedDate}
+              //onFocus={getName.bind(this)}
+              value={datevisit}
+              min={new Date().toISOString().slice(0, -8)}
+              max="2137-02-20T20:20"
+              //default={Date.now()}
+              className="form-control"
               name="datevisit"
               value={datevisit}
-              default={Date.now()}
-              className="form-control"
-              placeholder="date"
               type="datetime-local"
               onChange={handleChange}
             />
@@ -194,6 +235,10 @@ const BookingVisit = () => {
               <option value="Lukas">Lukas</option>
               <option value="Chris">Chris</option>
               <option value="Pablo">Pablo</option>
+              <option value="Denis">Denis</option>
+              <option value="Carlos">Carlos</option>
+              <option value="Ricardo-Milos">Ricardo-Milos</option>
+              <option value="Dima">Dima</option>
             </select>
           </div>
         </div>
@@ -213,28 +258,25 @@ const BookingVisit = () => {
               onChange={handleChange}
             >
               <option value={null}></option>
-              <option value="Strzyżenie włosów 45PLN">
-                Strzyżenie włosów 45PLN
+              <option value="Haircut 12$">Haircut 12$</option>
+              <option value="Shaving hair 6$">Shaving hair 6$</option>
+              <option value="Hair dyeing 16$">Hair dyeing 16$</option>
+              <option value="Trimming the beard 11$">
+                Trimming the beard 11$
               </option>
-              <option value="Golenie włosów 20PLN">Golenie włosów 20PLN</option>
-              <option value="Farbowanie włosów 60PLN">
-                Farbowanie włosów 60PLN
+              <option value="Beard care 7$">Beard care 7$</option>
+              <option value="Combo: Haircut + Trimming the beard 18$">
+                Combo: Haircut + Trimming the beard 18$
               </option>
-              <option value="Trymowanie brody 40PLN">
-                Trymowanie brody 40PLN
-              </option>
-              <option value="Pielęgnacja brody 25PLN">
-                Pielęgnacja brody 25PLN
-              </option>
-              <option value="Combo: Strzyżenie włosów + Trymowanie bordy 70PLN">
-                Combo: Strzyżenie włosów + Trymowanie bordy 70PLN
+              <option value="Sznur 5$">
+                Combo: Haircut + Trimming the beard 18$
               </option>
             </select>
           </div>
         </div>
         <div className="form-group">
           <button type="submit" className="btn btn-primary btn-block">
-            Wyślij
+            Send
           </button>
         </div>
       </form>
@@ -256,7 +298,7 @@ const BookingVisit = () => {
           </div>
         </div>
       </div>
-      <div class="footer-copyright text-center py-3 mt-auto">
+      <div className="footer-copyright text-center py-3 mt-auto">
         © 2022 Created by: Andrzej Łęgowik
       </div>
     </div>

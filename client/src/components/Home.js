@@ -15,18 +15,20 @@ const Home = () => {
                 border: "3px black solid",
                 fontSize: 30,
                 backgroundColor: "white",
+                opacity: 0.8,
               }}
             >
-              My name is Andrzej. I am the founder of the LegoBarber website.
-              Our hairdressing salon is located in the center of Katowice. We
-              have qualified staff and a nice atmosphere. We have hundreds of
-              satisfied. If you want to test our services, please contact us by
-              phone or book an appointment via the Internet.
+              Lego barber is in the first 24-hour hairdressing salon in Poland.
+              It has many services tailored to each person. The grand opening of
+              the showroom took place on January 1, 2022. Our hairdressing salon
+              has modern equipment and qualified hairdressers.If you want to
+              test our services, please contact us by phone or book an
+              appointment via the Internet.
             </p>
           </div>
         </div>
       </div>
-      <div class="footer-copyright text-center py-3 mt-auto">
+      <div className="footer-copyright text-center py-3 mt-auto">
         © 2022 Created by: Andrzej Łęgowik
       </div>
     </div>

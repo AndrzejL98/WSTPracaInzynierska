@@ -195,6 +195,26 @@ exports.displayuser = async (req, res) => {
 exports.displaybooking = async (req, res) => {
   try {
     const bookings = await Booking.find();
+
+    res.json(bookings);
+  } catch (err) {
+    res.send(err).json("error przy wczytywaniu listy bookingu");
+  }
+};
+
+exports.displayuserpaneluser = async (req, res) => {
+  try {
+    const users = await User.find({ email: req.body.mail });
+    res.json(users);
+  } catch (err) {
+    res.send(err).json("error przy wczytywaniu listy usera");
+  }
+};
+
+exports.displayuserpanelorder = async (req, res) => {
+  try {
+    const bookings = await Booking.find({ email: req.body.mail });
+
     res.json(bookings);
   } catch (err) {
     res.send(err).json("error przy wczytywaniu listy bookingu");

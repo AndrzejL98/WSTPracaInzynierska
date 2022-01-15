@@ -33,3 +33,36 @@ export const sendbookingform = async (data) => {
 
   return response;
 };
+export const displayuserpaneluser = async (data) => {
+  const config = {
+    header: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const response = await axios.post("/api/auth/displayuser", data, config);
+
+  return response;
+};
+export const displayuserpanelorder = async (data) => {
+  const config = {
+    header: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const response = await axios.post("/api/auth/displaybooking", data, config);
+
+  return response;
+};
+// export const sendlocalmail = async (data) => {
+//   const config = {
+//     header: {
+//       "Content-Type": "application/json",
+//     },
+//   };
+
+//   const response = await axios.post("/api/auth/localmail", data, config);
+
+//   return response;
+// };

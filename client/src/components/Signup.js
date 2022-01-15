@@ -193,7 +193,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <div class="footer-copyright text-center py-3 mt-auto">
+      <div className="footer-copyright text-center py-3 mt-auto">
         © 2022 Created by: Andrzej Łęgowik
       </div>
     </div>
