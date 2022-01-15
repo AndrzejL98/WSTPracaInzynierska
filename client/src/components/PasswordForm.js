@@ -61,7 +61,7 @@ function PasswordForm(props) {
   const submitButton = async () => {
     if (validForm()) {
       Object.assign(inputField, props);
-      let url = "http://localhost:5000/api/auth/change-password";
+      let url = `${process.env.REACT_APP_BASEURL}/api/auth/change-password`;
       let options = {
         method: "POST",
         url: url,
@@ -69,7 +69,7 @@ function PasswordForm(props) {
       };
       try {
         let response = await axios(options);
-        console.log(response);
+        //console.log(response);
         if (response.data.statusText === "Success") {
           toast.success(response.data.message);
           //history.push("/signin");

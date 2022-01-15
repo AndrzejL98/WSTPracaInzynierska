@@ -12,10 +12,10 @@ const SignUp = () => {
   let history = useHistory();
   useEffect(() => {
     if (isAuthenticated() && isAuthenticated().role === 1) {
-      console.log("Redirect to Admin dashboard");
+      //console.log("Redirect to Admin dashboard");
       history.push("/admin/dashboard");
     } else if (isAuthenticated() && isAuthenticated().role === 0) {
-      console.log("Redirecting to user dashboard");
+      //console.log("Redirecting to user dashboard");
       history.push("/user/dashboard");
     }
   }, [history]);
@@ -81,7 +81,7 @@ const SignUp = () => {
 
       signup(data)
         .then((response) => {
-          console.log("Axios signup success: ", response);
+          //console.log("Axios signup success: ", response);
           setFormData({
             username: "",
             email: "",
@@ -92,7 +92,7 @@ const SignUp = () => {
           });
         })
         .catch((err) => {
-          console.log("Axios signup error: ", err);
+          //console.log("Axios signup error: ", err);
           setFormData({
             ...formData,
             loading: false,

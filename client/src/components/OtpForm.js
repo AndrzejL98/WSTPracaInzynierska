@@ -10,7 +10,7 @@ const OtpForm = () => {
   const [otpForm, showForm] = useState(true);
   const sendOtp = async () => {
     try {
-      let url = "http://localhost:5000/api/auth/email-send";
+      let url = `${process.env.REACT_APP_BASEURL}/api/auth/email-send`;
       let options = {
         method: "POST",
         url: url,

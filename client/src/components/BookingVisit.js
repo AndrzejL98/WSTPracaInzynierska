@@ -3,8 +3,6 @@ import isEmpty from "validator/lib/isEmpty";
 import isEmail from "validator/lib/isEmail";
 import { showErrorMessage, showSuccessMessage } from "../helpers/messages";
 import { showLoading } from "../helpers/loading";
-import Datetime from "react-datetime";
-import "react-datetime/css/react-datetime.css";
 import { sendbookingform } from "../api/auth";
 
 const BookingVisit = () => {
@@ -76,13 +74,13 @@ const BookingVisit = () => {
       };
 
       setFormData({ ...formData, loading: true });
-      console.log(data);
-      console.log(worker.value);
-      console.log(service.value);
+      // console.log(data);
+      // console.log(worker.value);
+      // console.log(service.value);
 
       sendbookingform(data)
         .then((response) => {
-          console.log("Axios sendbookingform success: ", response);
+          //console.log("Axios sendbookingform success: ", response);
           setFormData({
             name: "",
             surname: "",
@@ -94,7 +92,7 @@ const BookingVisit = () => {
           });
         })
         .catch((err) => {
-          console.log("Axios sendbookingform error: ", err);
+          // console.log("Axios sendbookingform error: ", err);
           setFormData({
             ...formData,
             loading: false,

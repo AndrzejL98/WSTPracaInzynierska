@@ -32,7 +32,7 @@ exports.signupController = async (req, res) => {
     });
     welcomemailer(req.body.email);
   } catch (err) {
-    console.log("signupController error", err);
+    //console.log("signupController error", err);
     res.status(500).json({
       errorMessage: "Server error",
     });
@@ -66,7 +66,7 @@ exports.signinController = async (req, res) => {
 
       jwt.sign(payload, jwtSecret, { expiresIn: jwtExpire }, (err, token) => {
         if (err) {
-          console.log("jwt error: ", err);
+          // console.log("jwt error: ", err);
         }
         const { _id, username, email, role } = user;
 
@@ -77,7 +77,7 @@ exports.signinController = async (req, res) => {
       });
     }
   } catch (err) {
-    console.log("signinController err:", err);
+    //console.log("signinController err:", err);
     res.status(500).json({
       errorMessage: "Server error",
     });
@@ -177,9 +177,9 @@ const mailer = (email, otp) => {
 
   transporter.sendMail(mailerOptions, function (error, info) {
     if (error) {
-      console.log(error);
+      //console.log(error);
     } else {
-      console.log("Email sent: " + info.response);
+      // console.log("Email sent: " + info.response);
     }
   });
 };
@@ -248,9 +248,9 @@ const bookingmailer = (name, surname, email, datevisit, worker, service) => {
 
   transporter.sendMail(mailerOptions, function (error, info) {
     if (error) {
-      console.log(error);
+      // console.log(error);
     } else {
-      console.log("Email sent: " + info.response);
+      // console.log("Email sent: " + info.response);
     }
   });
 };
@@ -274,9 +274,9 @@ const welcomemailer = (email) => {
 
   transporter.sendMail(mailerOptions, function (error, info) {
     if (error) {
-      console.log(error);
+      // console.log(error);
     } else {
-      console.log("Email sent: " + info.response);
+      //console.log("Email sent: " + info.response);
     }
   });
 };
@@ -308,7 +308,7 @@ exports.sendBookingController = async (req, res) => {
       req.body.service
     );
   } catch (err) {
-    console.log("Booking Visit error", err);
+    //console.log("Booking Visit error", err);
     res.status(500).json({
       errorMessage: "Booking Visit error",
     });

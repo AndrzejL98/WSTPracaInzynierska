@@ -10,7 +10,7 @@ const connectDB = async () => {
         useUnifiedTopology: true,
       }
     );
-    console.log("Baza danych połączona");
+    //console.log("Baza danych połączona");
   } catch (err) {
     console.error(err);
   }

@@ -6,6 +6,7 @@ const connenctDB = require("./database/db");
 const authRoutes = require("./routes/auth");
 
 //middleware
+app.use(express.static("public"));
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());

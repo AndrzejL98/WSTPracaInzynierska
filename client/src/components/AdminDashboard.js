@@ -27,19 +27,19 @@ export class AdminDashboard extends Component {
   }
 
   getUsers = () => {
-    const mail = "andrzejlegowik1@gmail.com";
+    //const mail = "andrzejlegowik1@gmail.com";
     axios
       //.post("http://localhost:5000/api/auth/displayuser")
-      .get(`http://${process.env.PORT}/api/auth/displayuser`)
+      .get(`${process.env.REACT_APP_BASEURL}/api/auth/displayuser`)
       .then((response) => {
         //const mail = JSON.parse(localStorage.getItem("user")).email;
-        console.log(mail);
+        //console.log(mail);
         const data = response.data;
         //data.filter((user) => user.email === mail.email);
         this.setState({
           users: data,
         });
-        console.log(data);
+        //console.log(data);
       })
       .catch(() => {
         alert("Error");
@@ -49,13 +49,13 @@ export class AdminDashboard extends Component {
   getBookings = () => {
     //const mail = JSON.parse(localStorage.getItem("user")).email;
     axios
-      .get(`http://${process.env.PORT}/api/auth/displaybooking`)
+      .get(`${process.env.REACT_APP_BASEURL}/api/auth/displaybooking`)
       .then((response) => {
         const data = response.data;
         this.setState({
           bookings: data,
         });
-        console.log(data);
+        //console.log(data);
       })
       .catch(() => {
         alert("Error");

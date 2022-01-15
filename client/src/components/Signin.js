@@ -12,10 +12,10 @@ const Signin = () => {
 
   useEffect(() => {
     if (isAuthenticated() && isAuthenticated().role === 1) {
-      console.log("Redirect to Admin dashboard");
+      // console.log("Redirect to Admin dashboard");
       history.push("/admin/dashboard");
     } else if (isAuthenticated() && isAuthenticated().role === 0) {
-      console.log("Redirecting to user dashboard");
+      // console.log("Redirecting to user dashboard");
       history.push("/user/dashboard");
     }
   }, [history]);
@@ -65,15 +65,15 @@ const Signin = () => {
           setAuthentication(response.data.token, response.data.user);
 
           if (isAuthenticated() && isAuthenticated().role === 1) {
-            console.log("Redirect to Admin dashboard");
+            // console.log("Redirect to Admin dashboard");
             history.push("/admin/dashboard");
           } else {
-            console.log("Redirecting to user dashboard");
+            // console.log("Redirecting to user dashboard");
             history.push("/user/dashboard");
           }
         })
         .catch((err) => {
-          console.log("signin api function error: ", err);
+          // console.log("signin api function error: ", err);
           setFormData({
             ...formData,
             loading: false,

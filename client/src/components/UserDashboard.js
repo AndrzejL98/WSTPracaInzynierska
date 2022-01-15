@@ -33,16 +33,18 @@ class UserDashboard extends React.Component {
     const mail = JSON.parse(localStorage.getItem("user")).email;
     axios
       //.post("http://localhost:5000/api/auth/displayuser")
-      .post(`http:/${process.env.PORT}/api/auth/displayuserpaneluser`, { mail })
+      .post(`${process.env.REACT_APP_BASEURL}/api/auth/displayuserpaneluser`, {
+        mail,
+      })
       .then((response) => {
         //const mail = JSON.parse(localStorage.getItem("user")).email;
-        console.log(mail);
+        // console.log(mail);
         const data = response.data;
         //data.filter((user) => user.email === mail.email);
         this.setState({
           users: data,
         });
-        console.log(data);
+        //console.log(data);
       })
       .catch(() => {
         alert("Error");
@@ -52,7 +54,7 @@ class UserDashboard extends React.Component {
   displayuserpanelorder = () => {
     const mail = JSON.parse(localStorage.getItem("user")).email;
     axios
-      .post(`http://${process.env.PORT}/api/auth/displayuserpanelorder`, {
+      .post(`${process.env.REACT_APP_BASEURL}/api/auth/displayuserpanelorder`, {
         mail,
       })
       .then((response) => {
@@ -60,7 +62,7 @@ class UserDashboard extends React.Component {
         this.setState({
           bookings: data,
         });
-        console.log(data);
+        //console.log(data);
       })
       .catch(() => {
         alert("Error");
@@ -126,7 +128,7 @@ class UserDashboard extends React.Component {
   render() {
     const displayName = () => {
       const user = JSON.parse(localStorage.getItem("user"));
-      console.log(user);
+      //console.log(user);
       return (
         <div>
           <h2 className="list-group-item list-group-item-primary">
